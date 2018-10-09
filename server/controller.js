@@ -1,9 +1,9 @@
 const getTotalPrice = require('./product');
-const getProducts = require('./product');
+// const getProducts = require('./product');
 const productsList = require('./data/products.json');
 
 const getProductsHandler = function(req, res) {
-  const obj = { 'products': getProducts };
+  const obj = { 'products': productsList };
   res.json(obj);
 };
 
