@@ -23,7 +23,7 @@ const checkIds = function(productIds) {
 };
 
 const getTotalPrice = function(productIds) {
-  if (!(checkIds(productIds))) {
+  if (!checkIds(productIds)) {
     return false;
   }
   return productIds
