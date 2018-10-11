@@ -12,9 +12,8 @@ const checkIds = function(productIds) {
   let flag = true;
   const prods = getProducts();
 
-  prods.forEach((element) => {
-    arr.push(element.id);
-  });
+  prods.forEach(element => arr.push(element.id));
+
   productIds.forEach((id) => {
     if (arr.indexOf(parseInt(id, 10)) === -1) {
       flag = false;
@@ -29,9 +28,7 @@ const getTotalPrice = function(productIds) {
   }
   return productIds
     .map(id => productsById[id])
-    .reduce((total, product) => {
-      return total + product.price;
-    }, 0);
+    .reduce((total, product) => total + product.price, 0);
 };
 
 module.exports = {

@@ -9,24 +9,20 @@ const getProductsHandler = function(req, res) {
 };
 
 const calcTotalPriceHandler = function(req, res) {
-  let flag = false;
-  const selectIds = req.query.ids.split(',');
-  selectIds.forEach((element) => {
-    const num = parseInt(element, 10);
-    if (Number.isNaN(num)) {
-      flag = true;
+  const productIds = req.query.ids.split(',');
+  for (let count = 0; count < productIds.length; count += 1) {
+    if (Number.isNaN(parseInt(productIds[count], 10))) {
+      return res.status(400).json({});
     }
-  });
+  }
 
-  if (flag) return res.status(400).json({});
+  const total = getTotalPrice(productIds);
 
-  const price = getTotalPrice(selectIds);
-
-  if (!price) return res.status(400).json({});
+  if (!total) return res.status(400).json({});
 
   const obj = {
-    productIds: selectIds,
-    total: price,
+    productIds,
+    total,
   };
   res.json(obj);
 };
