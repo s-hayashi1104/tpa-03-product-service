@@ -16,7 +16,7 @@ const checkIds = function(productIds) {
     arr.push(element.id);
   });
   productIds.forEach((id) => {
-    if (arr.indexOf(id) === -1) {
+    if (arr.indexOf(parseInt(id, 10)) === -1) {
       flag = false;
     }
   });
